@@ -1,18 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
-    private float mTimeLimit = 3.0f;
-    private float mTimer = 0f;
-    private List<Vector3> mTargets = new List<Vector3>();
-    private int mIndex = 0;
-    private int mIndex2 = 0;            // 회전 인덱스
-    private int NumberOfTargets = 20;
 
-    public Vector3 mTarget;
+    public ParticleSystem mParticleSystem;
 
     private string mId = string.Empty;
     private string mShipId = string.Empty;
@@ -87,6 +82,17 @@ public class Missile : MonoBehaviour
             this.gameObject.SetActive(false);
             return;
         }
+
+        // 마지막 timeStamp라면 폭발 이펙트 발생
+        if (mLocations.Last().Key == timeStamp)
+        {
+            mParticleSystem.transform.parent = null;
+            Destroy(this.gameObject);
+            Destroy(mParticleSystem, mParticleSystem.duration);
+            mParticleSystem.Play();
+        }
+
+        // 움직이는 중인 경우
         if (mLocations.ContainsKey(timeStamp) && mLocations.ContainsKey(timeStamp + mInterval))
         {
             // 이미 목적지에 도착했다면 멈추도록

@@ -85,7 +85,6 @@ public class MissileBuilder : MonoBehaviour
         {
             GameObject _missile = Instantiate(mMissilePrefab);
             _missile.name = missile.Id;
-            _missile.AddComponent<Missile>();
             _missile.GetComponent<Missile>().Id = missile.Id;
             _missile.GetComponent<Missile>().shipId(missile.ShipId); 
             _missile.GetComponent<Missile>().Locations = missile.Locations;

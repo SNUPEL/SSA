@@ -8,15 +8,15 @@ public class SimulationManager : MonoBehaviour
     public static SimulationManager mInstance;
 
     private float mDelta = 0f;
-    private float mStep = 0.05f;
+    private float mStep = 0.1f;
     // private float mStep = Time.deltaTime;
     private int mTimeStamp = 12;
     private static List<GameObject> mShips = new List<GameObject>();
     private static List<GameObject> mMissiles = new List<GameObject>();
     public static int x_transformFactor = 300;
     public static int z_transformFactor = 300;
-    public static int xScaleFactor = 10;
-    public static int zScaleFactor = 10;
+    public static int xScaleFactor = 5;
+    public static int zScaleFactor = 5;
     public static int Interval = 2;
 
     private void Awake()
@@ -43,7 +43,9 @@ public class SimulationManager : MonoBehaviour
         foreach (GameObject ship in mShips)
             ship.GetComponent<Ship>().move(mTimeStamp, mStep);
         foreach (GameObject missile in mMissiles)
-            missile.GetComponent<Missile>().move(mTimeStamp, mStep);
+            if (missile != null)
+                missile.GetComponent<Missile>().move(mTimeStamp, mStep);
+        
         if (mDelta < 2f)
         {
             mDelta += mStep;
