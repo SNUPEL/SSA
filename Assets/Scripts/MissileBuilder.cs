@@ -90,13 +90,13 @@ public class MissileBuilder : MonoBehaviour
             _missile.GetComponent<Missile>().Locations = missile.Locations;
             _missile.SetActive(false);
             _missile.transform.position = _missile.GetComponent<Missile>().Locations.First().Value;
-            //_missile.GetComponent<Missile>().transform.localScale
             _missile.transform.forward = _missile.GetComponent<Missile>().Locations[_missile.GetComponent<Missile>().Locations.First().Key + SimulationManager.Interval] - _missile.GetComponent<Missile>().Locations[_missile.GetComponent<Missile>().Locations.First().Key];
             SimulationManager.AddMissile(_missile);
 
             // Hack: Debug를 위한 경로 생성 로직 추가함
             //createMissileWay(_missile, missile.Locations);
         }
+
         mMissiles.Clear();
         isFirstLine = true;
     }

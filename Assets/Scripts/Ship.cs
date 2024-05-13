@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using UnityEngine;
 
 public class Ship : MonoBehaviour
@@ -21,7 +22,14 @@ public class Ship : MonoBehaviour
         set { mLocations = value; }
     }
 
-
+    public int MaxTimeStamp
+    {
+        get
+        {
+            return mLocations.Last().Key;
+        }
+        set { }
+    }
 
     private Dictionary<int ,Vector3> mLocations = new Dictionary<int, Vector3>();
 
@@ -39,14 +47,21 @@ public class Ship : MonoBehaviour
 
     public void move(int timeStamp, float deltaTime)
     {
+        if (mLocations.Last().Key == timeStamp)
+        {
+            this.gameObject.transform.position = mLocations.First().Value;
+            this.gameObject.SetActive(false);
+            return;
+        }
+
         if (!mLocations.ContainsKey(timeStamp))
         {
             this.gameObject.SetActive(false);
             return;
         }
-        this.gameObject.SetActive(true);
         if (mLocations.ContainsKey(timeStamp) && mLocations.ContainsKey(timeStamp + mInterval))
         {
+            this.gameObject.SetActive(true);
             this.transform.position += (mLocations[timeStamp + mInterval] - mLocations[timeStamp]) / (mInterval / deltaTime);
             this.transform.rotation = Quaternion.LookRotation(mLocations[timeStamp + mInterval] - mLocations[timeStamp]);
         }

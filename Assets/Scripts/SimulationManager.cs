@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,12 +12,14 @@ public class SimulationManager : MonoBehaviour
     private float mStep = 0.1f;
     // private float mStep = Time.deltaTime;
     private int mTimeStamp = 12;
+    private int mMaxTimeStamp = 0;
+
     private static List<GameObject> mShips = new List<GameObject>();
     private static List<GameObject> mMissiles = new List<GameObject>();
     public static int x_transformFactor = 300;
     public static int z_transformFactor = 300;
-    public static int xScaleFactor = 5;
-    public static int zScaleFactor = 5;
+    public static int xScaleFactor = 1;
+    public static int zScaleFactor = 1;
     public static int Interval = 2;
 
     private void Awake()
@@ -35,6 +38,17 @@ public class SimulationManager : MonoBehaviour
         GetComponent<ShipBuilder>().Build("Assets//Input//foe_ship.csv");
         GetComponent<MissileBuilder>().Build("Assets//Input//fri_sam.csv");
         GetComponent<MissileBuilder>().Build("Assets//Input//foe_ssm.csv");
+        CalculateMaxTimeStamp();
+    }
+
+    private void CalculateMaxTimeStamp()
+    {
+        foreach (GameObject ship in mShips)
+            if (ship.GetComponent<Ship>().MaxTimeStamp > mMaxTimeStamp)
+                mMaxTimeStamp = ship.GetComponent<Ship>().MaxTimeStamp;
+        foreach (GameObject missile in mMissiles)
+            if (missile.GetComponent<Missile>().MaxTimeStamp > mMaxTimeStamp)
+                mMaxTimeStamp = missile.GetComponent<Missile>().MaxTimeStamp;
     }
 
     // Update is called once per frame
@@ -54,6 +68,10 @@ public class SimulationManager : MonoBehaviour
         // 각 GameObject를 다음 위치값으로 옮기고 delta 값을 초기화함
         mTimeStamp += Interval;
         mDelta = 0f;
+
+        if (mTimeStamp > mMaxTimeStamp + 20)
+            mTimeStamp = 0;
+        
     }
 
     public static Vector3 translate(Vector3 location)

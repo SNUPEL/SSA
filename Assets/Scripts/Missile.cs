@@ -12,9 +12,11 @@ public class Missile : MonoBehaviour
     private string mId = string.Empty;
     private string mShipId = string.Empty;
     private string mCla = string.Empty;
+    private int mTimeStamp;
     private string mMode = string.Empty;
     public Dictionary<int, Vector3> mLocations = new Dictionary<int, Vector3>();
     private int mInterval = SimulationManager.Interval;
+    private Mode mState = global::Mode.INACTIVE;
 
     public string Id
     {
@@ -32,6 +34,27 @@ public class Missile : MonoBehaviour
     {
         get { return mCla; }
         set { }
+    }
+
+    private int TimeStamp
+    {
+        get { return mTimeStamp; }
+        set
+        {
+            mTimeStamp = value;
+        }
+    }
+
+    public int MaxTimeStamp
+    {
+        get
+        {
+            return mLocations.Last().Key;
+        }
+        set
+        {
+
+        }
     }
 
     public Dictionary<int, Vector3> Locations { 
@@ -74,37 +97,57 @@ public class Missile : MonoBehaviour
         return this;
     }
 
+    private Mode State
+    {
+        get 
+        {
+            if (!mLocations.ContainsKey(TimeStamp))
+                mState = global::Mode.INACTIVE;
+            else if (mLocations.Last().Key == TimeStamp)
+                mState = global::Mode.STOP;
+            else if (mLocations.ContainsKey(TimeStamp) && mLocations.ContainsKey(TimeStamp + mInterval))
+                mState = global::Mode.MOVING;
+            return mState; 
+        }
+    } 
+
+    private bool isArrived()
+    {
+        if (Vector3.Distance(this.gameObject.transform.position, mLocations[TimeStamp + mInterval]) < 0.1)
+            return true;
+        return false;
+    }
+
     public void move(int timeStamp, float deltaTime)
     {
-        // 시뮬레이션 타임라인이 존재하지 않는다면 비활성화
-        if (!mLocations.ContainsKey(timeStamp))
+        TimeStamp = timeStamp;
+        switch(State)
         {
-            this.gameObject.SetActive(false);
-            return;
-        }
-
-        // 마지막 timeStamp라면 폭발 이펙트 발생
-        if (mLocations.Last().Key == timeStamp)
-        {
-            mParticleSystem.transform.parent = null;
-            Destroy(this.gameObject);
-            Destroy(mParticleSystem, mParticleSystem.duration);
-            mParticleSystem.Play();
-        }
-
-        // 움직이는 중인 경우
-        if (mLocations.ContainsKey(timeStamp) && mLocations.ContainsKey(timeStamp + mInterval))
-        {
-            // 이미 목적지에 도착했다면 멈추도록
-            if (Vector3.Distance(this.gameObject.transform.position, mLocations[timeStamp + mInterval]) < 0.1)
+            case global::Mode.INACTIVE:
+                this.gameObject.SetActive(false);
+                this.gameObject.transform.position = mLocations.First().Value;
                 return;
-            this.transform.position += (mLocations[timeStamp + mInterval] - mLocations[timeStamp]) / (mInterval / deltaTime);
 
-            if (Vector3.Angle(mLocations[timeStamp + mInterval] - mLocations[timeStamp], this.transform.forward) >= 2.0f)
-                this.transform.forward = (this.transform.forward * 100 + mLocations[timeStamp + mInterval] - mLocations[timeStamp]) / 2;
-            // 한 번에 방향 전환이 되는 로직
-            //this.transform.rotation = Quaternion.LookRotation(mLocations[timeStamp + mInterval] - mLocations[timeStamp]);
-            this.gameObject.SetActive(true);
+            case global::Mode.MOVING:
+                this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                mParticleSystem.transform.parent = this.gameObject.transform;
+                if (isArrived())
+                    return;
+                this.transform.position += (mLocations[timeStamp + mInterval] - mLocations[timeStamp]) / (mInterval / deltaTime);
+                if (Vector3.Angle(mLocations[timeStamp + mInterval] - mLocations[timeStamp], this.transform.forward) >= 2.0f)
+                    this.transform.forward = (this.transform.forward * 100 + mLocations[timeStamp + mInterval] - mLocations[timeStamp]) / 2;
+                this.gameObject.SetActive(true);
+                return;
+
+            case global::Mode.STOP:
+                mParticleSystem.transform.parent = null;
+                mParticleSystem.transform.position = this.transform.position;
+                mParticleSystem.Play();
+                this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                return;
+            default:
+                return;
+
         }
     }
 }
