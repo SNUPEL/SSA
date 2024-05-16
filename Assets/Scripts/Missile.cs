@@ -7,14 +7,15 @@ using UnityEngine;
 public class Missile : MonoBehaviour
 {
 
-    public ParticleSystem mParticleSystem;
+    public ParticleSystem mExplosion;
+    public ParticleSystem mSmoke;
 
     private string mId = string.Empty;
     private string mShipId = string.Empty;
     private string mCla = string.Empty;
     private int mTimeStamp;
     private string mMode = string.Empty;
-    public Dictionary<int, Vector3> mLocations = new Dictionary<int, Vector3>();
+    private Dictionary<int, Vector3> mLocations;
     private int mInterval = SimulationManager.Interval;
     private Mode mState = global::Mode.INACTIVE;
 
@@ -49,7 +50,7 @@ public class Missile : MonoBehaviour
     {
         get
         {
-            return mLocations.Last().Key;
+            return Locations.Last().Key;
         }
         set
         {
@@ -60,6 +61,8 @@ public class Missile : MonoBehaviour
     public Dictionary<int, Vector3> Locations { 
         get
         {
+            if (mLocations == null)
+                mLocations = new Dictionary<int, Vector3>();
             return mLocations;
         } 
         set 
@@ -81,7 +84,7 @@ public class Missile : MonoBehaviour
 
     public Missile addLocation(int timeStamp, Vector3 location)
     {
-        this.mLocations.Add(timeStamp, location);
+        Locations.Add(timeStamp, location);
         return this;
     }
 
@@ -130,7 +133,11 @@ public class Missile : MonoBehaviour
 
             case global::Mode.MOVING:
                 this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                mParticleSystem.transform.parent = this.gameObject.transform;
+                mExplosion.transform.position = this.gameObject.transform.position;
+                mExplosion.transform.parent = this.gameObject.transform;
+                mSmoke.transform.position = this.gameObject.transform.position;
+                mSmoke.transform.parent = this.gameObject.transform;
+                mSmoke.Play();
                 if (isArrived())
                     return;
                 this.transform.position += (mLocations[timeStamp + mInterval] - mLocations[timeStamp]) / (mInterval / deltaTime);
@@ -140,9 +147,10 @@ public class Missile : MonoBehaviour
                 return;
 
             case global::Mode.STOP:
-                mParticleSystem.transform.parent = null;
-                mParticleSystem.transform.position = this.transform.position;
-                mParticleSystem.Play();
+                mExplosion.transform.parent = null;
+                mExplosion.Play();
+                mSmoke.transform.parent = null;
+                mSmoke.Stop();
                 this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
                 return;
             default:

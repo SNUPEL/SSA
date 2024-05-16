@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -87,5 +88,35 @@ public class SimulationManager : MonoBehaviour
     public static void AddMissile(GameObject missile)
     {
         mMissiles.Add(missile);
+    }
+
+    public static void ScatterFoeShips()
+    {
+        Vector3 _center = new Vector3();
+        float _scaleFactor = 20f;
+        int _count = 0;
+       foreach(GameObject ship in mShips)
+        {
+            if (ship.name == "Foe Ship")
+            {
+                _center += ship.transform.position;
+                _count++;
+            }
+        }
+        _center = _center / _count;
+       foreach (GameObject ship in mShips)
+        {
+            if (ship.name != "Foe Ship") continue;
+            Dictionary<int, Vector3> _scaled = new Dictionary<int, Vector3>();
+            foreach(var location in ship.GetComponent<Ship>().Locations)
+            {
+                Vector3 _scaledLocation = location.Value;
+                _scaledLocation.x = ((location.Value - _center) * _scaleFactor + _center).x;
+                //_scaledLocation.z = ((location.Value - _center) * _scaleFactor + _center).z;
+                _scaled.Add(location.Key, _scaledLocation);
+            }
+            ship.GetComponent<Ship>().Locations = _scaled;
+            ship.transform.position = ship.GetComponent<Ship>().Locations.First().Value;
+        }
     }
 }

@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using UnityEngine;
+using static UnityEditor.FilePathAttribute;
 
 public class Ship : MonoBehaviour
 {
     public string mId;
     private int mInterval = SimulationManager.Interval;
+    private Dictionary<int, Vector3> mLocations;
+    private bool mIsFirst = true;
 
     public string Id
     {
@@ -18,8 +21,14 @@ public class Ship : MonoBehaviour
 
     public Dictionary<int, Vector3> Locations
     {
-        get { return mLocations; }
-        set { mLocations = value; }
+        get {
+            if (mLocations == null)
+                mLocations = new Dictionary<int, Vector3>();
+            return mLocations; 
+        }
+        set {
+            mLocations = value; 
+        }
     }
 
     public int MaxTimeStamp
@@ -31,8 +40,6 @@ public class Ship : MonoBehaviour
         set { }
     }
 
-    private Dictionary<int ,Vector3> mLocations = new Dictionary<int, Vector3>();
-
     public Ship id(string id)
     {
         this.mId = id;
@@ -41,7 +48,7 @@ public class Ship : MonoBehaviour
 
     public Ship addLocation(int timeStamp, Vector3 location)
     {
-        mLocations.Add(timeStamp, location);
+        Locations.Add(timeStamp, location);
         return this;
     }
 
@@ -49,16 +56,23 @@ public class Ship : MonoBehaviour
     {
         if (mLocations.Last().Key == timeStamp)
         {
-            this.gameObject.transform.position = mLocations.First().Value;
-            this.gameObject.SetActive(false);
+            //this.gameObject.transform.position = mLocations.First().Value;
+            mIsFirst = true;
+            //this.gameObject.SetActive(false);
             return;
         }
 
-        if (!mLocations.ContainsKey(timeStamp))
+        if (mIsFirst && timeStamp == 0)
         {
-            this.gameObject.SetActive(false);
-            return;
+            this.gameObject.transform.position = mLocations.First().Value;
+            mIsFirst = false;
         }
+
+        //if (!mLocations.ContainsKey(timeStamp))
+        //{
+        //    this.gameObject.SetActive(false);
+        //    return;
+        //}
         if (mLocations.ContainsKey(timeStamp) && mLocations.ContainsKey(timeStamp + mInterval))
         {
             this.gameObject.SetActive(true);

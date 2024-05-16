@@ -23,6 +23,7 @@ public class MissileBuilder : MonoBehaviour
         int _missileId;
         int _missile_x;
         int _missile_y;
+        float _missileHeight = 5.5f;
 
         // friend SAM에만 있는 value
         int _mode;
@@ -53,9 +54,8 @@ public class MissileBuilder : MonoBehaviour
                 _target = 3;
                 _classification = 5;
 
-                Vector3 _originalPosition = new Vector3(float.Parse(_data[_missile_x]), 8f, float.Parse(_data[_missile_y]));
+                Vector3 _originalPosition = new Vector3(float.Parse(_data[_missile_x]), _missileHeight, float.Parse(_data[_missile_y]));
                 _position = SimulationManager.translate(_originalPosition);
-                //_position = new Vector3(float.Parse(_data[_missile_x]) * _xScaleFactor, 8f, float.Parse(_data[_missile_y]) * _zScaleFactor);
 
                 _missile.shipId(_data[_shipId]).Classification(_data[_classification]).id(_data[_missileId]).addLocation(int.Parse(_data[_timeStamp]), _position);
             } else
@@ -65,10 +65,9 @@ public class MissileBuilder : MonoBehaviour
                 _missile_x = 2;
                 _missile_y = 3;
 
-                Vector3 _originalPosition = new Vector3(float.Parse(_data[_missile_x]), 8f, float.Parse(_data[_missile_y]));
+                Vector3 _originalPosition = new Vector3(float.Parse(_data[_missile_x]), _missileHeight, float.Parse(_data[_missile_y]));
                 _position = SimulationManager.translate(_originalPosition);
 
-                //_position = new Vector3(float.Parse(_data[_missile_x]) * _xScaleFactor, 8f, float.Parse(_data[_missile_y]) * _zScaleFactor);
                 _missile.id(_data[_missileId]).addLocation(int.Parse(_data[_timeStamp]), _position);
             }
 
