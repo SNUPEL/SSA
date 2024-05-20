@@ -10,13 +10,14 @@ public class SimulationManager : MonoBehaviour
     public static SimulationManager mInstance;
 
     private float mDelta = 0f;
-    private float mStep = 0.1f;
+    private float mStep = 0.2f;
     // private float mStep = Time.deltaTime;
     private int mTimeStamp = 12;
     private int mMaxTimeStamp = 0;
 
     private static List<GameObject> mShips = new List<GameObject>();
     private static List<GameObject> mMissiles = new List<GameObject>();
+    private static List<GameObject> mDecoys = new List<GameObject>();
     public static int x_transformFactor = 300;
     public static int z_transformFactor = 300;
     public static int xScaleFactor = 1;
@@ -38,7 +39,12 @@ public class SimulationManager : MonoBehaviour
         GetComponent<ShipBuilder>().Build("Assets//Input//fri_ship.csv");
         GetComponent<ShipBuilder>().Build("Assets//Input//foe_ship.csv");
         GetComponent<MissileBuilder>().Build("Assets//Input//fri_sam.csv");
+        GetComponent<MissileBuilder>().Build("Assets//Input//fri_ssm.csv");
         GetComponent<MissileBuilder>().Build("Assets//Input//foe_ssm.csv");
+        GetComponent<MissileBuilder>().Build("Assets//Input//foe_sam.csv");
+
+
+        GetComponent<DecoyBuilder>().Build("Assets//Input//decoy.csv");
         CalculateMaxTimeStamp();
     }
 
@@ -60,6 +66,9 @@ public class SimulationManager : MonoBehaviour
         foreach (GameObject missile in mMissiles)
             if (missile != null)
                 missile.GetComponent<Missile>().move(mTimeStamp, mStep);
+        foreach (GameObject decoy in mDecoys)
+            decoy.GetComponent<Decoy>().move(mTimeStamp);
+
         
         if (mDelta < 2f)
         {
@@ -88,6 +97,10 @@ public class SimulationManager : MonoBehaviour
     public static void AddMissile(GameObject missile)
     {
         mMissiles.Add(missile);
+    }
+    public static void AddDecoy(GameObject decoy)
+    {
+        mDecoys.Add(decoy);
     }
 
     public static void ScatterFoeShips()

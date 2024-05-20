@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class ShipBuilder : MonoBehaviour
+public class ShipBuilder : ObjectBuilder
 {
     private bool isFirstLine = true;
     public GameObject mShipPrefab;
@@ -23,25 +24,32 @@ public class ShipBuilder : MonoBehaviour
         int _xScaleFactor = SimulationManager.xScaleFactor;
         int _zScaleFactor = SimulationManager.zScaleFactor;
 
-        while (!_streamReader.EndOfStream)
+        try
         {
-            string _line = _streamReader.ReadLine();
-            if (isFirstLine)
+            while (!_streamReader.EndOfStream)
             {
-                isFirstLine = false;
-                continue;
+                string _line = _streamReader.ReadLine();
+                if (isFirstLine)
+                {
+                    isFirstLine = false;
+                    continue;
+                }
+                string[] _data = _line.Split(',');
+
+                if (mShips.Exists(ship => ship.Id == _data[_shipId]))
+                {
+                    Vector3 _originalPosition = new Vector3(float.Parse(_data[_ship_x]), _shipHeight, float.Parse(_data[_ship_y]));
+                    mShips.Find(ship => ship.Id == _data[_shipId]).addLocation(int.Parse(_data[_timeStamp]), SimulationManager.translate(_originalPosition));
+                }
+                else
+                    mShips.Add(new Ship().id(_data[_shipId]).addLocation(int.Parse(_data[_timeStamp]), SimulationManager.translate(new Vector3(float.Parse(_data[_ship_x]), _shipHeight, float.Parse(_data[_ship_y])))));
             }
-            string[] _data = _line.Split(',');
-
-            if (mShips.Exists(ship => ship.Id == _data[_shipId])) 
-            {
-                Vector3 _originalPosition = new Vector3(float.Parse(_data[_ship_x]), _shipHeight, float.Parse(_data[_ship_y]));
-                mShips.Find(ship => ship.Id == _data[_shipId]).addLocation(int.Parse(_data[_timeStamp]), SimulationManager.translate(_originalPosition));
-            } 
-            else
-                mShips.Add(new Ship().id(_data[_shipId]).addLocation(int.Parse(_data[_timeStamp]), SimulationManager.translate(new Vector3(float.Parse(_data[_ship_x]), _shipHeight, float.Parse(_data[_ship_y])))));
+        } catch (Exception exception)
+        {
+            Debug.Log(string.Format("{0} 파일을 읽는 과정 중에서 아래와 같은 오류가 발생했습니다. \n{1}", url, exception.Message));
+            throw new Exception(exception.Message);
         }
-
+        
         foreach (Ship ship in mShips)
         {
             GameObject _ship = Instantiate(mShipPrefab);
@@ -56,7 +64,7 @@ public class ShipBuilder : MonoBehaviour
             _ship.transform.position = _ship.GetComponent<Ship>().Locations.First().Value;
             SimulationManager.AddShip(_ship);
         }
-        SimulationManager.ScatterFoeShips();
+        //SimulationManager.ScatterFoeShips();
         mShips.Clear();
         isFirstLine = true;
     }
