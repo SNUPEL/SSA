@@ -7,8 +7,7 @@ public class ObjectBuilder : MonoBehaviour
 {
 
     private bool isFirstLine = true;
-    private List<string> row = new List<string>();
-    protected List<List<string>> mDatas = new List<List<string>>();
+    protected List<string[]> mDatas = new List<string[]>();
 
     public void ReadCsv(string url)
     {
@@ -23,9 +22,7 @@ public class ObjectBuilder : MonoBehaviour
                 continue;
             }
             string[] _datas = _line.Split(',');
-            foreach (var data in _datas)
-                row.Add(data);
-            mDatas.Add(row);
+            mDatas.Add(_datas);
         }
         isFirstLine = true;
     }

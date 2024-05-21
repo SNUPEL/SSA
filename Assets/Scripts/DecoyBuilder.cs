@@ -8,7 +8,7 @@ using UnityEngine;
 public class DecoyBuilder : ObjectBuilder
 {
     public GameObject mDecoyPrefab;
-    private List<int> mTimeStamps = new List<int>();
+    private List<UnityEngine.Vector2> mLocations = new List<UnityEngine.Vector2>();
 
     private int mIndexDecoyTime = 0;
     private int mIndexFriendId = 1;
@@ -21,11 +21,11 @@ public class DecoyBuilder : ObjectBuilder
         ReadCsv(url);
         foreach (var data in mDatas)
         {
-            if (mTimeStamps.Contains(int.Parse(data[mIndexDecoyTime])))
+            if (mLocations.Contains(new UnityEngine.Vector2(float.Parse(data[mIndexDecoyX]), float.Parse(data[mIndexDecoyY]))))
                 continue;
-            mTimeStamps.Add(int.Parse(data[mIndexDecoyTime]));
+            mLocations.Add(new UnityEngine.Vector2(float.Parse(data[mIndexDecoyX]), float.Parse(data[mIndexDecoyY])));
             Decoy decoy = new Decoy();
-            UnityEngine.Vector3 _location = new UnityEngine.Vector3(float.Parse(data[mIndexDecoyX]), mHeight, float.Parse(data[mIndexDecoyY]));
+            UnityEngine.Vector3 _location = SimulationManager.translate(new UnityEngine.Vector3(float.Parse(data[mIndexDecoyX]), mHeight, float.Parse(data[mIndexDecoyY])));
             int _startTimeStamp = int.Parse(data[mIndexDecoyTime]);
             decoy.SetLocation(_location).SetStartTimeStamp(_startTimeStamp);
 

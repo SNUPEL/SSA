@@ -31,7 +31,7 @@ public class Decoy : MonoBehaviour
 
     public void move(int timeStamp)
     {
-        if (mLastingTime < timeStamp)
+        if (mEndTimeStamp < timeStamp)
             this.gameObject.SetActive(false);
         else if (timeStamp > mEndTimeStamp)
         {
