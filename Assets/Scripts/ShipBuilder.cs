@@ -54,16 +54,23 @@ public class ShipBuilder : ObjectBuilder
         {
             GameObject _ship = Instantiate(mShipPrefab);
             if (url.ToLower().Contains("foe"))
+            {
                 _ship.name = "Foe Ship";
+                _ship.layer = LayerMask.NameToLayer(_ship.name);
+            }
             else
+            {
                 _ship.name = "Friend Ship";
-            _ship.AddComponent<Ship>();
+                _ship.layer = LayerMask.NameToLayer(_ship.name);
+            }
             _ship.GetComponent<Ship>().id(ship.Id);
             _ship.GetComponent<Ship>().Locations = ship.Locations;
             _ship.SetActive(false);
             _ship.transform.position = _ship.GetComponent<Ship>().Locations.First().Value;
             SimulationManager.AddShip(_ship);
         }
+
+        
         //SimulationManager.ScatterFoeShips();
         mShips.Clear();
         isFirstLine = true;

@@ -43,4 +43,12 @@ public class Decoy : MonoBehaviour
             this.gameObject.transform.position = mLocation;
         }
     }
+
+    /// <summary>
+    /// Decoy의 위치를 재조정한다.
+    /// </summary>
+    public void scaleLocation()
+    {
+        mLocation.Set(mLocation.x + 20, mLocation.y, mLocation.z);
+    }
 }

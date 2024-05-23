@@ -6,18 +6,20 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
-
     public ParticleSystem mExplosion;
     public ParticleSystem mSmoke;
 
     private string mId = string.Empty;
     private string mShipId = string.Empty;
+    private string mTarget = string.Empty;
     private string mCla = string.Empty;
     private int mTimeStamp;
+    private Dictionary<int, string> mModes;
     private string mMode = string.Empty;
+
     private Dictionary<int, Vector3> mLocations;
     private int mInterval = SimulationManager.Interval;
-    private Mode mState = global::Mode.INACTIVE;
+    private State mState = State.INACTIVE;
 
     public string Id
     {
@@ -27,14 +29,39 @@ public class Missile : MonoBehaviour
 
     public string ShipId
     {
-        get { return mShipId; } 
+        get { return mShipId; }
         set { }
+    }
+
+    public string Target
+    {
+        get { return mTarget; }
+        set { mTarget = value; }
     }
 
     public string Cla
     {
         get { return mCla; }
         set { }
+    }
+
+    public Dictionary<int, string> Modes
+    {
+        get
+        {
+            if (mModes == null)
+                mModes = new Dictionary<int, string>();
+            return mModes;
+        } set
+        { mModes = value; }
+    }
+
+    public string Mode
+    {
+        get {
+            return mMode;
+        }
+        set { mMode = value; }
     }
 
     private int TimeStamp
@@ -58,14 +85,14 @@ public class Missile : MonoBehaviour
         }
     }
 
-    public Dictionary<int, Vector3> Locations { 
+    public Dictionary<int, Vector3> Locations {
         get
         {
             if (mLocations == null)
                 mLocations = new Dictionary<int, Vector3>();
             return mLocations;
-        } 
-        set 
+        }
+        set
         {
             mLocations = value;
         }
@@ -82,6 +109,12 @@ public class Missile : MonoBehaviour
         return this;
     }
 
+    public Missile setTarget(string target)
+    {
+        this.mTarget = target;
+        return this;
+    }
+
     public Missile addLocation(int timeStamp, Vector3 location)
     {
         Locations.Add(timeStamp, location);
@@ -94,22 +127,22 @@ public class Missile : MonoBehaviour
         return this;
     }
 
-    public Missile Mode(string mode)
+    public Missile addMode(int timeStamp, string mode)
     {
-        this.Mode(mode);
+        this.Modes.Add(timeStamp, mode);
         return this;
     }
 
-    private Mode State
+    private State State
     {
         get 
         {
             if (!mLocations.ContainsKey(TimeStamp))
-                mState = global::Mode.INACTIVE;
+                mState = global::State.INACTIVE;
             else if (mLocations.Last().Key == TimeStamp)
-                mState = global::Mode.STOP;
+                mState = global::State.STOP;
             else if (mLocations.ContainsKey(TimeStamp) && mLocations.ContainsKey(TimeStamp + mInterval))
-                mState = global::Mode.MOVING;
+                mState = global::State.MOVING;
             return mState; 
         }
     } 
@@ -124,14 +157,17 @@ public class Missile : MonoBehaviour
     public void move(int timeStamp, float deltaTime)
     {
         TimeStamp = timeStamp;
+        if (Modes.ContainsKey(timeStamp))
+            this.Mode = Modes[timeStamp];
         switch(State)
         {
-            case global::Mode.INACTIVE:
+            case State.INACTIVE:
                 this.gameObject.SetActive(false);
                 this.gameObject.transform.position = mLocations.First().Value;
+                this.gameObject.GetComponent<Seeker>().Reset();
                 return;
 
-            case global::Mode.MOVING:
+            case State.MOVING:
                 this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
                 mExplosion.transform.position = this.gameObject.transform.position;
                 mExplosion.transform.parent = this.gameObject.transform;
@@ -146,7 +182,7 @@ public class Missile : MonoBehaviour
                 this.gameObject.SetActive(true);
                 return;
 
-            case global::Mode.STOP:
+            case State.STOP:
                 mExplosion.transform.parent = null;
                 mExplosion.Play();
                 mSmoke.transform.parent = null;

@@ -1,6 +1,6 @@
 
 
-public enum Mode
+public enum State
 {
     INACTIVE, MOVING, STOP
 }

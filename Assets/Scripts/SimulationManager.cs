@@ -10,7 +10,7 @@ public class SimulationManager : MonoBehaviour
     public static SimulationManager mInstance;
 
     private float mDelta = 0f;
-    private float mStep = 0.2f;
+    private float mStep = 0.05f;
     // private float mStep = Time.deltaTime;
     private int mTimeStamp = 12;
     private int mMaxTimeStamp = 0;
@@ -103,6 +103,11 @@ public class SimulationManager : MonoBehaviour
         mDecoys.Add(decoy);
     }
 
+    public static GameObject GetMissile(string id)
+    {
+        return mMissiles.Find(missile => missile.name == id);
+    }
+
     public static void ScatterFoeShips()
     {
         Vector3 _center = new Vector3();
@@ -130,6 +135,14 @@ public class SimulationManager : MonoBehaviour
             }
             ship.GetComponent<Ship>().Locations = _scaled;
             ship.transform.position = ship.GetComponent<Ship>().Locations.First().Value;
+        }
+    }
+
+    public static void ScaleDecoy()
+    {
+        foreach (var decoy in mDecoys)
+        {
+            decoy.GetComponent<Decoy>().scaleLocation();
         }
     }
 }

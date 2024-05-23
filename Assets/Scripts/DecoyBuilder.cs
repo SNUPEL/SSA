@@ -33,5 +33,6 @@ public class DecoyBuilder : ObjectBuilder
             _decoy.GetComponent<Decoy>().SetLocation(_location).SetStartTimeStamp(_startTimeStamp);
             SimulationManager.AddDecoy(_decoy);
         }
+        SimulationManager.ScaleDecoy();
     }
 }
