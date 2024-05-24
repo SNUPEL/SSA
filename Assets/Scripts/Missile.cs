@@ -164,7 +164,7 @@ public class Missile : MonoBehaviour
             case State.INACTIVE:
                 this.gameObject.SetActive(false);
                 this.gameObject.transform.position = mLocations.First().Value;
-                this.gameObject.GetComponent<Seeker>().Reset();
+                //this.gameObject.GetComponent<Seeker>().Reset();
                 return;
 
             case State.MOVING:

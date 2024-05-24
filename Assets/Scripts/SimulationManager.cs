@@ -105,6 +105,8 @@ public class SimulationManager : MonoBehaviour
 
     public static GameObject GetMissile(string id)
     {
+        if (mMissiles == null) 
+            return null;
         return mMissiles.Find(missile => missile.name == id);
     }
 

@@ -12,6 +12,7 @@ public class FieldOfView : MonoBehaviour
     public float mAngle;
     public LayerMask targetMask;
 
+
     // 임시로 정의한 변수(1초 동안 하나의 미사일에 사격하는 방식으로)
     private float mDeltaTime = 0f;
     private List<String> mShootedMissile = new List<string>();
@@ -54,19 +55,24 @@ public class FieldOfView : MonoBehaviour
 
     private void CheckFieldofView()
     {
-        Collider[] _collider = Physics.OverlapSphere(this.transform.position, mRadius, 1 << targetMask);
+        Collider[] _collider = Physics.OverlapSphere(transform.position, mRadius, 1 << targetMask);
         if (_collider.Length > 0 )
         {
             Transform _target = _collider[SetTarget(_collider)].transform;
             Vector3 _directionToTarget = (_target.position - transform.position).normalized;
-            float _angle = Vector3.Angle(new Vector3(0, 0, 1), _directionToTarget);
+            float _angle = Vector3.Angle(transform.parent.gameObject.transform.forward, _directionToTarget);
             if (_angle < mAngle / 2)
             {
                 var _bullet = ObjectPool.GetObject();
-                _bullet.transform.position = this.transform.position;
+                _bullet.transform.position = transform.position;
                 var _direction = _target.position - transform.position;
                 _bullet.Shoot(_direction.normalized);
             }
         }
+    }
+
+    public Collider[] GetColliders() 
+    {
+        return Physics.OverlapSphere(transform.position, mRadius, 1 << targetMask);
     }
 }

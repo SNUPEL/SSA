@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:VisualElement style="flex-grow: 1; justify-content: space-between; align-self: flex-end; align-items: flex-end; color: rgb(255, 0, 0);">
+            <ui:VisualElement style="flex-grow: 1;">
+                <ui:Label tabindex="-1" text="침몰된 적 함정 수:&#10;침몰된 아군 함정 수:" parse-escape-sequences="true" display-tooltip-when-elided="true" style="-unity-font: url(&apos;project://database/Assets/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=cd767ee576534d34fac56d4bb996efa2&amp;type=3#NotInter-Regular&apos;); font-size: 14px;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

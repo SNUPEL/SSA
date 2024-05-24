@@ -8,27 +8,20 @@ public class Seeker : MonoBehaviour
 
     public GameObject mSeekerFov;
     [Range(0f, 60f)]
-    public float mRange;
+    private float mRange = 60;
     private float mDegree = 0;
     private bool isForward = true;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if (this.gameObject.GetComponent<Missile>().Mode.ToLower() == "brm")
+        if (this.transform.parent.gameObject.GetComponent<Missile>().Mode.ToLower() == "brm")
         {
             Vector3 _from = new Vector3(mSeekerFov.transform.position.x, 0, mSeekerFov.transform.position.z);
-            Vector3 _to = SimulationManager.GetMissile(this.gameObject.GetComponent<Missile>().Target).transform.position;
+            Vector3 _to = SimulationManager.GetMissile(this.transform.parent.gameObject.GetComponent<Missile>().Target).transform.position;
             _to.y = 0f;
-            
-            //mSeekerFov.transform.LookAt(_to);
-            mSeekerFov.transform.LookAt(new Vector3(_to.x, 0f, _to.z));
-            mSeekerFov.transform.position.Set(mSeekerFov.transform.position.x, 64.5f, mSeekerFov.transform.position.z);
+            mSeekerFov.transform.forward = _to - _from;
             return;
         } else
             homing();
@@ -40,10 +33,10 @@ public class Seeker : MonoBehaviour
     /// </summary>
     private void homing()
     {
-        float _deltaDegree = isForward? 0.1f:-0.1f;
+        float _deltaDegree = isForward ? 0.3f : -0.3f;
 
-            mSeekerFov.transform.Rotate(0, _deltaDegree, 0);
-            mDegree += _deltaDegree;
+        mSeekerFov.transform.Rotate(0, _deltaDegree, 0);
+        mDegree += _deltaDegree;
 
         if (mDegree >= mRange / 2)
             isForward = false;
