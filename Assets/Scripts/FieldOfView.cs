@@ -31,9 +31,12 @@ public class FieldOfView : MonoBehaviour
 
     /// <summary>
     /// 탐색할 게임 오브젝트를 설정합니다.
-    /// Foe Ship 게임 오브젝트는 'Friend Missile'이 탐색되면 CIWS가 발사되도록,
-    /// Friend Ship 게임 오브젝트는 'Foe Missile'이 탐색되면 CIWS가 발사되도록 설정합니다.
+    /// <br>Foe Ship 게임 오브젝트는 'Friend Missile'이 탐색되면 CIWS가 발사되도록,</br>
+    /// <br>Friend Ship 게임 오브젝트는 'Foe Missile'이 탐색되면 CIWS가 발사되도록 설정합니다.</br>
     /// </summary>
+    /// <note> 여기에는 주의할 사항에 대해서 작성합니다.
+    /// </note>
+    /// @note 주의할 사항!
     private void SetTargetMask()
     {
         if (this.gameObject.transform.parent.gameObject.layer == LayerMask.NameToLayer("Foe Ship"))
@@ -62,6 +65,8 @@ public class FieldOfView : MonoBehaviour
     /// <summary>
     /// 격추할 미사일 리스트를 저장, 관리하는 함수입니다.
     /// </summary>
+    /// <param name="colliders"> 충돌 검출 리스트입니다.</param>
+    /// <returns>인덱스를 리턴합니다.</returns>
     private int SetTarget(Collider[] colliders)
     {
         int a = (int)UnityEngine.Random.Range(0f, colliders.Length);
