@@ -1,0 +1,27 @@
+var class_simulation_manager =
+[
+    [ "AddDecoy", "class_simulation_manager.html#ae41e69023bdd61a3966d4560a066d29c", null ],
+    [ "AddMissile", "class_simulation_manager.html#a7df3558826837f9cf1d39705424865c2", null ],
+    [ "AddShip", "class_simulation_manager.html#a9735f549137a4aadabc800beb0c5f2f5", null ],
+    [ "Awake", "class_simulation_manager.html#ac3d4ac3bd16968089776f14276db3d04", null ],
+    [ "CalculateMaxTimeStamp", "class_simulation_manager.html#a3de5100182fc5042865efed0cf81d746", null ],
+    [ "GetMissile", "class_simulation_manager.html#a054fc79fbd2e23dddabe30ed7e9a2c71", null ],
+    [ "ScaleDecoy", "class_simulation_manager.html#af9770311bdac5d20e44ec42ed47d8a85", null ],
+    [ "ScatterFoeShips", "class_simulation_manager.html#a50f30ed90869d080b3a6b7759e9a1b1c", null ],
+    [ "Start", "class_simulation_manager.html#a21ea99d67142f1df367c84c7af074a8a", null ],
+    [ "translate", "class_simulation_manager.html#a26d375ee165e87465d25d6e1bda9650c", null ],
+    [ "Update", "class_simulation_manager.html#a6c75de507b04005d131ac37f0a1685a5", null ],
+    [ "Interval", "class_simulation_manager.html#ae63dac26d98e08ad89278d7fc3ddf4c3", null ],
+    [ "mDecoys", "class_simulation_manager.html#aeee4a372c063b3c6f284c84d3ee661f2", null ],
+    [ "mDelta", "class_simulation_manager.html#a8a66ad9a5812f4297d523f62e73375b7", null ],
+    [ "mInstance", "class_simulation_manager.html#a28641e17e54185cdcad7443b9463fa6f", null ],
+    [ "mMaxTimeStamp", "class_simulation_manager.html#ace9aac2afe2d708a60e726a6d309247e", null ],
+    [ "mMissiles", "class_simulation_manager.html#ad57d2aadc8c4f76d2a41cbceb305ed21", null ],
+    [ "mShips", "class_simulation_manager.html#aa88dc21f4d98cb15881e4e3fb832ebd6", null ],
+    [ "mStep", "class_simulation_manager.html#a048102d67d87347a5f07c453c58c8bac", null ],
+    [ "mTimeStamp", "class_simulation_manager.html#a9eb6ba4ce60f706a8defd391908a67e7", null ],
+    [ "x_transformFactor", "class_simulation_manager.html#a07c4251c910593de3bb491a1c716d467", null ],
+    [ "xScaleFactor", "class_simulation_manager.html#af5353682ccfcb5b781fa75acaae35d19", null ],
+    [ "z_transformFactor", "class_simulation_manager.html#aab2d6e027125020ebb325142d06254e8", null ],
+    [ "zScaleFactor", "class_simulation_manager.html#ad901dae0ef4bcafc13e2757c6ee4f2c6", null ]
+];

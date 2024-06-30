@@ -21,8 +21,9 @@ var searchData=
   ['shoot_18',['Shoot',['../class_bullet.html#a45ee1ad53847b10c4d0a665407e32930',1,'Bullet']]],
   ['simulationmanager_19',['SimulationManager',['../class_simulation_manager.html',1,'']]],
   ['simulationmanager_2ecs_20',['SimulationManager.cs',['../_simulation_manager_8cs.html',1,'']]],
-  ['start_21',['Start',['../class_camera_manager.html#a5010f55d95e2b09bf041387388a38ec1',1,'CameraManager.Start()'],['../class_field_of_view.html#a3b6a1e50381f9ff61238abf36c3443a0',1,'FieldOfView.Start()'],['../class_ship_property.html#afb3f8468be4c85216703771b14be4368',1,'ShipProperty.Start()'],['../class_simulation_manager.html#a21ea99d67142f1df367c84c7af074a8a',1,'SimulationManager.Start()']]],
-  ['starttimestamp_22',['StartTimeStamp',['../class_decoy.html#a8716d363ea1d393a3d437fff25d189de',1,'Decoy']]],
-  ['state_23',['State',['../class_missile.html#ad9730a403cbda5b7ebb66723213e75ce',1,'Missile.State'],['../_state_8cs.html#a5d74787dedbc4e11c1ab15bf487e61f8',1,'State:&#160;State.cs']]],
-  ['state_2ecs_24',['State.cs',['../_state_8cs.html',1,'']]]
+  ['ssa_21',['SSA',['../index.html',1,'']]],
+  ['start_22',['Start',['../class_camera_manager.html#a5010f55d95e2b09bf041387388a38ec1',1,'CameraManager.Start()'],['../class_field_of_view.html#a3b6a1e50381f9ff61238abf36c3443a0',1,'FieldOfView.Start()'],['../class_ship_property.html#afb3f8468be4c85216703771b14be4368',1,'ShipProperty.Start()'],['../class_simulation_manager.html#a21ea99d67142f1df367c84c7af074a8a',1,'SimulationManager.Start()']]],
+  ['starttimestamp_23',['StartTimeStamp',['../class_decoy.html#a8716d363ea1d393a3d437fff25d189de',1,'Decoy']]],
+  ['state_24',['State',['../class_missile.html#ad9730a403cbda5b7ebb66723213e75ce',1,'Missile.State'],['../_state_8cs.html#a5d74787dedbc4e11c1ab15bf487e61f8',1,'State:&#160;State.cs']]],
+  ['state_2ecs_25',['State.cs',['../_state_8cs.html',1,'']]]
 ];
