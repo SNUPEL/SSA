@@ -1,8 +1,5 @@
 @mainpage
 
-이 문서는 메인 페이지입니다.
-
 본 프로젝트는 적함과 아군함의 미사일 교전에 대한 피격성 시뮬레이션 결과를 Unity 환경에서 가시화하는 프로젝트입니다.
 
-
-![result2](image.JPG)
+![Simulation GIF](Simulation_AI.gif)
