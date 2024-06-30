@@ -2,4 +2,4 @@
 
 ![result](./Assets/Scripts/docs/SSY Simulation_AI_20240611_v2.gif)
 
-![result2](./Assets/Scripts/docs/image.JPG)
+![result2](./Assets/Scripts/docs/image.jpg)
