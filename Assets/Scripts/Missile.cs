@@ -8,6 +8,8 @@ public class Missile : MonoBehaviour
 {
     public ParticleSystem mExplosion;
     public ParticleSystem mSmoke;
+    public GameObject mSeeker;
+    public GameObject mSeekerRange;
 
     private string mId = string.Empty;
     private string mShipId = string.Empty;
@@ -140,7 +142,7 @@ public class Missile : MonoBehaviour
             if (!mLocations.ContainsKey(TimeStamp))
                 mState = global::State.INACTIVE;
             else if (mLocations.Last().Key == TimeStamp)
-                mState = global::State.STOP;
+                mState = global::State.EXPLODED;
             else if (mLocations.ContainsKey(TimeStamp) && mLocations.ContainsKey(TimeStamp + mInterval))
                 mState = global::State.MOVING;
             return mState; 
@@ -164,7 +166,6 @@ public class Missile : MonoBehaviour
             case State.INACTIVE:
                 this.gameObject.SetActive(false);
                 this.gameObject.transform.position = mLocations.First().Value;
-                //this.gameObject.GetComponent<Seeker>().Reset();
                 return;
 
             case State.MOVING:
@@ -174,6 +175,8 @@ public class Missile : MonoBehaviour
                 mSmoke.transform.position = this.gameObject.transform.position;
                 mSmoke.transform.parent = this.gameObject.transform;
                 mSmoke.Play();
+                mSeeker.SetActive(true);
+                mSeekerRange.SetActive(true);
                 if (isArrived())
                     return;
                 this.transform.position += (mLocations[timeStamp + mInterval] - mLocations[timeStamp]) / (mInterval / deltaTime);
@@ -182,11 +185,13 @@ public class Missile : MonoBehaviour
                 this.gameObject.SetActive(true);
                 return;
 
-            case State.STOP:
+            case State.EXPLODED:
                 mExplosion.transform.parent = null;
                 mExplosion.Play();
                 mSmoke.transform.parent = null;
                 mSmoke.Stop();
+                mSeeker.SetActive(false);
+                mSeekerRange.SetActive(false);
                 this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
                 return;
             default:

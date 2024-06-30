@@ -2,5 +2,5 @@
 
 public enum State
 {
-    INACTIVE, MOVING, STOP
+    INACTIVE, MOVING, EXPLODED
 }

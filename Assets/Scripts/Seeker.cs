@@ -16,6 +16,8 @@ public class Seeker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (this.transform.parent == null) return;
+
         if (this.transform.parent.gameObject.GetComponent<Missile>().Mode.ToLower() == "brm")
         {
             Vector3 _from = new Vector3(mSeekerFov.transform.position.x, 0, mSeekerFov.transform.position.z);

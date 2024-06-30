@@ -10,7 +10,7 @@ public class SimulationManager : MonoBehaviour
     public static SimulationManager mInstance;
 
     private float mDelta = 0f;
-    private float mStep = 0.05f;
+    private const float mStep = 0.25f;
     // private float mStep = Time.deltaTime;
     private int mTimeStamp = 12;
     private int mMaxTimeStamp = 0;
@@ -36,12 +36,12 @@ public class SimulationManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<ShipBuilder>().Build("Assets//Input//fri_ship.csv");
-        GetComponent<ShipBuilder>().Build("Assets//Input//foe_ship.csv");
-        GetComponent<MissileBuilder>().Build("Assets//Input//fri_sam.csv");
-        GetComponent<MissileBuilder>().Build("Assets//Input//fri_ssm.csv");
-        GetComponent<MissileBuilder>().Build("Assets//Input//foe_ssm.csv");
-        GetComponent<MissileBuilder>().Build("Assets//Input//foe_sam.csv");
+        GetComponent<ShipBuilder>().Build("Assets//Input//AI//fri_ship.csv");
+        GetComponent<ShipBuilder>().Build("Assets//Input//AI//foe_ship.csv");
+        GetComponent<MissileBuilder>().Build("Assets//Input//AI//fri_sam.csv");
+        GetComponent<MissileBuilder>().Build("Assets//Input//AI//fri_ssm.csv");
+        GetComponent<MissileBuilder>().Build("Assets//Input//AI//foe_ssm.csv");
+        GetComponent<MissileBuilder>().Build("Assets//Input//AI//foe_sam.csv");
 
 
         GetComponent<DecoyBuilder>().Build("Assets//Input//decoy.csv");

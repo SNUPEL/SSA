@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     public void Shoot(Vector3 direction)
     {
         this._direction = direction;
-        Invoke("DestroyBullet", 2f);
+        Invoke("DestroyBullet", 1f);
     }
 
     public void DestroyBullet()

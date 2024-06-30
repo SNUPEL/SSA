@@ -5,11 +5,17 @@ using System.Threading;
 using UnityEngine;
 
 
+/// <summary>
+/// CIWS의 시야각을 관리합니다.
+/// </summary>
 public class FieldOfView : MonoBehaviour
 {
-    public float mRadius;
+    /// <summary>
+    /// 탐색할 각도를 설정합니다.
+    /// </summary>
+    public float mRadius = 80f;
     [Range(0f, 270f)]
-    public float mAngle;
+    public float mAngle = 270;
     public LayerMask targetMask;
 
 
@@ -23,6 +29,11 @@ public class FieldOfView : MonoBehaviour
         StartCoroutine(FovRoutine());
     }
 
+    /// <summary>
+    /// 탐색할 게임 오브젝트를 설정합니다.
+    /// Foe Ship 게임 오브젝트는 'Friend Missile'이 탐색되면 CIWS가 발사되도록,
+    /// Friend Ship 게임 오브젝트는 'Foe Missile'이 탐색되면 CIWS가 발사되도록 설정합니다.
+    /// </summary>
     private void SetTargetMask()
     {
         if (this.gameObject.transform.parent.gameObject.layer == LayerMask.NameToLayer("Foe Ship"))
@@ -32,6 +43,10 @@ public class FieldOfView : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 0.06초마다 체크합니다.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator FovRoutine()
     {
         float delay = 0.06f;
@@ -45,7 +60,7 @@ public class FieldOfView : MonoBehaviour
     }
 
     /// <summary>
-    /// 격추한 미사일 리스트를 저장, 관리하는 함수
+    /// 격추할 미사일 리스트를 저장, 관리하는 함수입니다.
     /// </summary>
     private int SetTarget(Collider[] colliders)
     {
