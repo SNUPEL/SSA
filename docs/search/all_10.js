@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['target_0',['Target',['../class_missile.html#a3e5dcf2e0bb298328b4e4805df0102ec',1,'Missile']]],
-  ['targetmask_1',['targetMask',['../class_field_of_view.html#ada779f51c2493b6dbc57f10a6ba3227e',1,'FieldOfView']]],
-  ['timestamp_2',['TimeStamp',['../class_missile.html#ae86478e186bfe658d030fd6a40a388cc',1,'Missile']]],
-  ['translate_3',['translate',['../class_simulation_manager.html#a26d375ee165e87465d25d6e1bda9650c',1,'SimulationManager']]]
+  ['update_0',['Update',['../class_bullet.html#ac6941e4e535a484e4b3a86b993633572',1,'Bullet.Update()'],['../class_seeker.html#a025f46184ce65ffb9a639a539b7a8110',1,'Seeker.Update()'],['../class_ship_property.html#aef38ed21c0b77260911f741cafd9f627',1,'ShipProperty.Update()'],['../class_simulation_manager.html#a6c75de507b04005d131ac37f0a1685a5',1,'SimulationManager.Update()']]]
 ];

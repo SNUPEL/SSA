@@ -1,7 +1,6 @@
 var annotated_dup =
 [
     [ "Bullet", "class_bullet.html", "class_bullet" ],
-    [ "CameraManager", "class_camera_manager.html", "class_camera_manager" ],
     [ "Decoy", "class_decoy.html", "class_decoy" ],
     [ "DecoyBuilder", "class_decoy_builder.html", "class_decoy_builder" ],
     [ "FieldOfView", "class_field_of_view.html", "class_field_of_view" ],

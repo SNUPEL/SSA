@@ -5,14 +5,20 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Pool;
 
+/// <summary>
+/// 미사일 피격성 평가 시뮬레이션을 관리하는 매니저
+/// </summary>
 public class SimulationManager : MonoBehaviour
 {
+    /// <summary>
+    /// 싱글턴 패턴 인스턴스
+    /// </summary>
     public static SimulationManager mInstance;
 
     private float mDelta = 0f;
     private const float mStep = 0.25f;
     // private float mStep = Time.deltaTime;
-    private int mTimeStamp = 12;
+    private int mTimeStamp = 12;    // 시작 Timestamp를 12로 설정함(빠른 디버깅을 위한 설정)
     private int mMaxTimeStamp = 0;
 
     private static List<GameObject> mShips = new List<GameObject>();
@@ -48,6 +54,10 @@ public class SimulationManager : MonoBehaviour
         CalculateMaxTimeStamp();
     }
 
+    /// <summary>
+    /// 입력 파일(로그) 중에서 가장 큰 Timestamp를 탐색합니다.
+    /// 시뮬레이션이 완료되면 다시 재시작하도록 하기 위함입니다.
+    /// </summary>
     private void CalculateMaxTimeStamp()
     {
         foreach (GameObject ship in mShips)
@@ -84,25 +94,48 @@ public class SimulationManager : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// 전체 게임오브젝트의 위치를 스케일링하여 가시성을 높입니다.
+    /// </summary>
+    /// <param name="location"></param>
+    /// <returns></returns>
     public static Vector3 translate(Vector3 location)
     {
         return new Vector3((location.x + x_transformFactor) * xScaleFactor, location.y, (location.z + z_transformFactor) * zScaleFactor);
     }
 
+    /// <summary>
+    /// 입력 파일 읽기 과정에 새로운 함대가 존재하면 함대 리스트에 추가합니다.
+    /// </summary>
+    /// <param name="ship"></param>
     public static void AddShip(GameObject ship)
     {
         mShips.Add(ship);
     }
 
+    /// <summary>
+    /// 입력 파일 읽기 과정에 새로운 미사일이 존재하면 미사일 리스트에 추가합니다.
+    /// </summary>
+    /// <param name="missile"></param>
     public static void AddMissile(GameObject missile)
     {
         mMissiles.Add(missile);
     }
+
+    /// <summary>
+    /// 입력 파일 읽기 과정에 새로운 Decoy가 존재하면 Decoy 리스트에 추가합니다.
+    /// </summary>
+    /// <param name="decoy"></param>
     public static void AddDecoy(GameObject decoy)
     {
         mDecoys.Add(decoy);
     }
 
+    /// <summary>
+    /// ID가 동일한 미사일을 탐색합니다.
+    /// </summary>
+    /// <param name="id">미사일 ID</param>
+    /// <returns>해당 미사일 게임 오브젝트</returns>
     public static GameObject GetMissile(string id)
     {
         if (mMissiles == null) 
@@ -110,6 +143,9 @@ public class SimulationManager : MonoBehaviour
         return mMissiles.Find(missile => missile.name == id);
     }
 
+    /// <summary>
+    /// (Deprecated) 함대들 사이의 간격을 임의로 넓힙니다.
+    /// </summary>
     public static void ScatterFoeShips()
     {
         Vector3 _center = new Vector3();
@@ -140,6 +176,9 @@ public class SimulationManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Decoy의 위치를 임의로 넓힙니다.
+    /// </summary>
     public static void ScaleDecoy()
     {
         foreach (var decoy in mDecoys)

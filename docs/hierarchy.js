@@ -2,7 +2,6 @@ var hierarchy =
 [
     [ "MonoBehaviour", null, [
       [ "Bullet", "class_bullet.html", null ],
-      [ "CameraManager", "class_camera_manager.html", null ],
       [ "Decoy", "class_decoy.html", null ],
       [ "FieldOfView", "class_field_of_view.html", null ],
       [ "Missile", "class_missile.html", null ],

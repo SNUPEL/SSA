@@ -109,6 +109,9 @@ $(function(){initNavTree('class_simulation_manager.html',''); initResizable(true
   <div class="headertitle"><div class="title">SimulationManager Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>미사일 피격성 평가 시뮬레이션을 관리하는 매니저  
+ <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for SimulationManager:</div>
 <div class="dyncontent">
@@ -119,23 +122,31 @@ Inheritance diagram for SimulationManager:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a26d375ee165e87465d25d6e1bda9650c" id="r_a26d375ee165e87465d25d6e1bda9650c"><td class="memItemLeft" align="right" valign="top">static Vector3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26d375ee165e87465d25d6e1bda9650c">translate</a> (Vector3 location)</td></tr>
+<tr class="memdesc:a26d375ee165e87465d25d6e1bda9650c"><td class="mdescLeft">&#160;</td><td class="mdescRight">전체 게임오브젝트의 위치를 스케일링하여 가시성을 높입니다.  <br /></td></tr>
 <tr class="separator:a26d375ee165e87465d25d6e1bda9650c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9735f549137a4aadabc800beb0c5f2f5" id="r_a9735f549137a4aadabc800beb0c5f2f5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9735f549137a4aadabc800beb0c5f2f5">AddShip</a> (GameObject ship)</td></tr>
+<tr class="memdesc:a9735f549137a4aadabc800beb0c5f2f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">입력 파일 읽기 과정에 새로운 함대가 존재하면 함대 리스트에 추가합니다.  <br /></td></tr>
 <tr class="separator:a9735f549137a4aadabc800beb0c5f2f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7df3558826837f9cf1d39705424865c2" id="r_a7df3558826837f9cf1d39705424865c2"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7df3558826837f9cf1d39705424865c2">AddMissile</a> (GameObject missile)</td></tr>
+<tr class="memdesc:a7df3558826837f9cf1d39705424865c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">입력 파일 읽기 과정에 새로운 미사일이 존재하면 미사일 리스트에 추가합니다.  <br /></td></tr>
 <tr class="separator:a7df3558826837f9cf1d39705424865c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae41e69023bdd61a3966d4560a066d29c" id="r_ae41e69023bdd61a3966d4560a066d29c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae41e69023bdd61a3966d4560a066d29c">AddDecoy</a> (GameObject decoy)</td></tr>
+<tr class="memdesc:ae41e69023bdd61a3966d4560a066d29c"><td class="mdescLeft">&#160;</td><td class="mdescRight">입력 파일 읽기 과정에 새로운 Decoy가 존재하면 <a class="el" href="class_decoy.html" title="Decoy 게임 오브젝트 관리 클래스">Decoy</a> 리스트에 추가합니다.  <br /></td></tr>
 <tr class="separator:ae41e69023bdd61a3966d4560a066d29c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a054fc79fbd2e23dddabe30ed7e9a2c71" id="r_a054fc79fbd2e23dddabe30ed7e9a2c71"><td class="memItemLeft" align="right" valign="top">static GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a054fc79fbd2e23dddabe30ed7e9a2c71">GetMissile</a> (string id)</td></tr>
+<tr class="memdesc:a054fc79fbd2e23dddabe30ed7e9a2c71"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID가 동일한 미사일을 탐색합니다.  <br /></td></tr>
 <tr class="separator:a054fc79fbd2e23dddabe30ed7e9a2c71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50f30ed90869d080b3a6b7759e9a1b1c" id="r_a50f30ed90869d080b3a6b7759e9a1b1c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50f30ed90869d080b3a6b7759e9a1b1c">ScatterFoeShips</a> ()</td></tr>
+<tr class="memdesc:a50f30ed90869d080b3a6b7759e9a1b1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">(Deprecated) 함대들 사이의 간격을 임의로 넓힙니다.  <br /></td></tr>
 <tr class="separator:a50f30ed90869d080b3a6b7759e9a1b1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9770311bdac5d20e44ec42ed47d8a85" id="r_af9770311bdac5d20e44ec42ed47d8a85"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af9770311bdac5d20e44ec42ed47d8a85">ScaleDecoy</a> ()</td></tr>
+<tr class="memdesc:af9770311bdac5d20e44ec42ed47d8a85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decoy의 위치를 임의로 넓힙니다.  <br /></td></tr>
 <tr class="separator:af9770311bdac5d20e44ec42ed47d8a85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a28641e17e54185cdcad7443b9463fa6f" id="r_a28641e17e54185cdcad7443b9463fa6f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_simulation_manager.html">SimulationManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28641e17e54185cdcad7443b9463fa6f">mInstance</a></td></tr>
+<tr class="memdesc:a28641e17e54185cdcad7443b9463fa6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">싱글턴 패턴 인스턴스  <br /></td></tr>
 <tr class="separator:a28641e17e54185cdcad7443b9463fa6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07c4251c910593de3bb491a1c716d467" id="r_a07c4251c910593de3bb491a1c716d467"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07c4251c910593de3bb491a1c716d467">x_transformFactor</a> = 300</td></tr>
 <tr class="separator:a07c4251c910593de3bb491a1c716d467"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -155,6 +166,7 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a21ea99d67142f1df367c84c7af074a8a" id="r_a21ea99d67142f1df367c84c7af074a8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21ea99d67142f1df367c84c7af074a8a">Start</a> ()</td></tr>
 <tr class="separator:a21ea99d67142f1df367c84c7af074a8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3de5100182fc5042865efed0cf81d746" id="r_a3de5100182fc5042865efed0cf81d746"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3de5100182fc5042865efed0cf81d746">CalculateMaxTimeStamp</a> ()</td></tr>
+<tr class="memdesc:a3de5100182fc5042865efed0cf81d746"><td class="mdescLeft">&#160;</td><td class="mdescRight">입력 파일(로그) 중에서 가장 큰 Timestamp를 탐색합니다. 시뮬레이션이 완료되면 다시 재시작하도록 하기 위함입니다.  <br /></td></tr>
 <tr class="separator:a3de5100182fc5042865efed0cf81d746"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c75de507b04005d131ac37f0a1685a5" id="r_a6c75de507b04005d131ac37f0a1685a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c75de507b04005d131ac37f0a1685a5">Update</a> ()</td></tr>
 <tr class="separator:a6c75de507b04005d131ac37f0a1685a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -179,7 +191,9 @@ Static Private Attributes</h2></td></tr>
 <tr class="memitem:aeee4a372c063b3c6f284c84d3ee661f2" id="r_aeee4a372c063b3c6f284c84d3ee661f2"><td class="memItemLeft" align="right" valign="top">static List&lt; GameObject &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeee4a372c063b3c6f284c84d3ee661f2">mDecoys</a> = new List&lt;GameObject&gt;()</td></tr>
 <tr class="separator:aeee4a372c063b3c6f284c84d3ee661f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>미사일 피격성 평가 시뮬레이션을 관리하는 매니저 </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ae41e69023bdd61a3966d4560a066d29c" name="ae41e69023bdd61a3966d4560a066d29c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae41e69023bdd61a3966d4560a066d29c">&#9670;&#160;</a></span>AddDecoy()</h2>
 
@@ -202,6 +216,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>입력 파일 읽기 과정에 새로운 Decoy가 존재하면 <a class="el" href="class_decoy.html" title="Decoy 게임 오브젝트 관리 클래스">Decoy</a> 리스트에 추가합니다. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">decoy</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -228,6 +250,14 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>입력 파일 읽기 과정에 새로운 미사일이 존재하면 미사일 리스트에 추가합니다. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">missile</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a9735f549137a4aadabc800beb0c5f2f5" name="a9735f549137a4aadabc800beb0c5f2f5"></a>
@@ -252,6 +282,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>입력 파일 읽기 과정에 새로운 함대가 존재하면 함대 리스트에 추가합니다. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ship</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -303,6 +341,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>입력 파일(로그) 중에서 가장 큰 Timestamp를 탐색합니다. 시뮬레이션이 완료되면 다시 재시작하도록 하기 위함입니다. </p>
+
 </div>
 </div>
 <a id="a054fc79fbd2e23dddabe30ed7e9a2c71" name="a054fc79fbd2e23dddabe30ed7e9a2c71"></a>
@@ -327,6 +367,15 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>ID가 동일한 미사일을 탐색합니다. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>미사일 ID</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>해당 미사일 게임 오브젝트</dd></dl>
 
 </div>
 </div>
@@ -353,6 +402,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Decoy의 위치를 임의로 넓힙니다. </p>
+
 </div>
 </div>
 <a id="a50f30ed90869d080b3a6b7759e9a1b1c" name="a50f30ed90869d080b3a6b7759e9a1b1c"></a>
@@ -377,6 +428,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>(Deprecated) 함대들 사이의 간격을 임의로 넓힙니다. </p>
 
 </div>
 </div>
@@ -427,6 +480,15 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>전체 게임오브젝트의 위치를 스케일링하여 가시성을 높입니다. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">location</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -541,6 +603,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>싱글턴 패턴 인스턴스 </p>
 
 </div>
 </div>
@@ -742,9 +806,6 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/cwss0/repos/SSA/Assets/Scripts/<a class="el" href="_simulation_manager_8cs.html">SimulationManager.cs</a></li>
-</ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

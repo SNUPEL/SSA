@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['cameramanager_0',['CameraManager',['../class_camera_manager.html',1,'']]]
+  ['decoy_0',['Decoy',['../class_decoy.html',1,'']]],
+  ['decoybuilder_1',['DecoyBuilder',['../class_decoy_builder.html',1,'']]]
 ];

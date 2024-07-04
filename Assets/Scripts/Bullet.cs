@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
+/// <summary>
+/// CIWS 게임 오브젝트 관리 클래스
+/// </summary>
 public class Bullet : MonoBehaviour
 {
 

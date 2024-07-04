@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Decoy 게임 오브젝트 관리 클래스
+/// </summary>
 public class Decoy : MonoBehaviour
 {
     public ParticleSystem mFogging;

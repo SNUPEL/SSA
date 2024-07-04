@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['objectbuilder_0',['ObjectBuilder',['../class_object_builder.html',1,'']]],
-  ['objectbuilder_2ecs_1',['ObjectBuilder.cs',['../_object_builder_8cs.html',1,'']]],
-  ['objectpool_2',['ObjectPool',['../class_object_pool.html',1,'']]],
-  ['objectpool_2ecs_3',['ObjectPool.cs',['../_object_pool_8cs.html',1,'']]]
+  ['poolingobject_0',['poolingObject',['../class_object_pool.html#a0a8064c375b1c86aef7dcba98d4061bd',1,'ObjectPool']]]
 ];

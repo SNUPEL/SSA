@@ -34,8 +34,6 @@ public class FieldOfView : MonoBehaviour
     /// <br>Foe Ship 게임 오브젝트는 'Friend Missile'이 탐색되면 CIWS가 발사되도록,</br>
     /// <br>Friend Ship 게임 오브젝트는 'Foe Missile'이 탐색되면 CIWS가 발사되도록 설정합니다.</br>
     /// </summary>
-    /// <note> 여기에는 주의할 사항에 대해서 작성합니다.
-    /// </note>
     /// @note 주의할 사항!
     private void SetTargetMask()
     {
