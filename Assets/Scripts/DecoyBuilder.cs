@@ -5,6 +5,9 @@ using System.IO;
 using System.Numerics;
 using UnityEngine;
 
+/// <summary>
+/// Decoy를 초기 생성할 때 사용하는 클래스
+/// </summary>
 public class DecoyBuilder : ObjectBuilder
 {
     public GameObject mDecoyPrefab;

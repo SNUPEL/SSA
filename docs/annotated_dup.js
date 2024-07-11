@@ -11,6 +11,5 @@ var annotated_dup =
     [ "Seeker", "class_seeker.html", "class_seeker" ],
     [ "Ship", "class_ship.html", "class_ship" ],
     [ "ShipBuilder", "class_ship_builder.html", "class_ship_builder" ],
-    [ "ShipProperty", "class_ship_property.html", "class_ship_property" ],
     [ "SimulationManager", "class_simulation_manager.html", "class_simulation_manager" ]
 ];

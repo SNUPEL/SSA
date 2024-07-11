@@ -13,7 +13,6 @@ var hierarchy =
       [ "ObjectPool", "class_object_pool.html", null ],
       [ "Seeker", "class_seeker.html", null ],
       [ "Ship", "class_ship.html", null ],
-      [ "ShipProperty", "class_ship_property.html", null ],
       [ "SimulationManager", "class_simulation_manager.html", null ]
     ] ]
 ];

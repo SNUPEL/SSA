@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "SSA", "index.html", [
+    [ "Diagram", "subsystem1.html", "subsystem1" ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],

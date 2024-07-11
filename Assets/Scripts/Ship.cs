@@ -6,6 +6,9 @@ using System.Linq;
 using UnityEngine;
 using static UnityEditor.FilePathAttribute;
 
+/// <summary>
+/// 선박 관리 클래스
+/// </summary>
 public class Ship : MonoBehaviour
 {
     public string mId;

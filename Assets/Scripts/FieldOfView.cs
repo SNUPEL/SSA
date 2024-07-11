@@ -6,7 +6,7 @@ using UnityEngine;
 
 
 /// <summary>
-/// CIWS의 시야각을 관리합니다.
+/// CIWS 시야각 관리 클래스
 /// </summary>
 public class FieldOfView : MonoBehaviour
 {

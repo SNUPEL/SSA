@@ -6,6 +6,9 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// Ship을 초기 생성할 때 사용하는 클래스
+/// </summary>
 public class ShipBuilder : ObjectBuilder
 {
     private bool isFirstLine = true;

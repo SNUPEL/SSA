@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 미사일의 시커를 관리하는 클래스
+/// </summary>
 public class Seeker : MonoBehaviour
 {
 
@@ -11,9 +14,7 @@ public class Seeker : MonoBehaviour
     private float mRange = 60;
     private float mDegree = 0;
     private bool isForward = true;
-    // Start is called before the first frame update
 
-    // Update is called once per frame
     void Update()
     {
         if (this.transform.parent == null) return;
@@ -46,8 +47,17 @@ public class Seeker : MonoBehaviour
             isForward = true;
     }
 
+    /// <summary>
+    /// 미사일이 폭발된 뒤에 시커의 위치를 초기화하는 함수입니다.
+    /// </summary>
+    /// @see 회전하는 함수에 대해서는 homing() 함수를, 작동 방법에 대해서는 Update() 함수를 참고하세요. ObjectPool.GetObject()도 참고할 수 있습니다.
+    /// @attention 가장 약한 단계의 주의 사항에 대해서 작성
+    /// @note 보통 단계의 주의 사항에 대해서 작성
+    /// @warning 상위 단계의 주의 사항에 대해서 작성
     public void Reset()
     {
         mSeekerFov.transform.LookAt(new Vector3(0f, 1f, 0f));
     }
+
+
 }

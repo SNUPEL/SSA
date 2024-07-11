@@ -48,9 +48,8 @@ public class SimulationManager : MonoBehaviour
         GetComponent<MissileBuilder>().Build("Assets//Input//AI//fri_ssm.csv");
         GetComponent<MissileBuilder>().Build("Assets//Input//AI//foe_ssm.csv");
         GetComponent<MissileBuilder>().Build("Assets//Input//AI//foe_sam.csv");
-
-
         GetComponent<DecoyBuilder>().Build("Assets//Input//decoy.csv");
+
         CalculateMaxTimeStamp();
     }
 

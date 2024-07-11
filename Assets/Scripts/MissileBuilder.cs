@@ -6,6 +6,9 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
+/// <summary>
+/// Missile을 초기 생성할 때 사용하는 클래스
+/// </summary>
 public class MissileBuilder : MonoBehaviour
 {
 

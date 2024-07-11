@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+/// <summary>
+/// 초기 생성 부모 클래스
+/// </summary>
 public class ObjectBuilder : MonoBehaviour
 {
 

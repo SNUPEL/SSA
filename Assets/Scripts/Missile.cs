@@ -4,6 +4,9 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// Missile을 관리하는 클래스
+/// </summary>
 public class Missile : MonoBehaviour
 {
     public ParticleSystem mExplosion;

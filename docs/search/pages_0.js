@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ssa_0',['SSA',['../index.html',1,'']]]
+  ['diagram_0',['Diagram',['../subsystem1.html',1,'Diagram'],['../subsubsystem1.html',1,'Sequence Diagram']]]
 ];

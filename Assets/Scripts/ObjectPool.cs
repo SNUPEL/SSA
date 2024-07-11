@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 오브젝트 풀 패턴 클래스
+/// </summary>
 public class ObjectPool : MonoBehaviour
 {
     public static ObjectPool mInstance;
