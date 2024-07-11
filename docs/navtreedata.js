@@ -25,7 +25,16 @@
 var NAVTREE =
 [
   [ "SSA", "index.html", [
-    [ "Diagram", "subsystem1.html", "subsystem1" ],
+    [ "Diagram", "subsystem1.html", [
+      [ "SimulatorManager", "subsystem1.html#SimulatorManager", null ],
+      [ "Builder", "subsystem1.html#Builder", null ],
+      [ "Ship", "subsystem1.html#Ship", null ],
+      [ "Missile", "subsystem1.html#Missile", null ],
+      [ "Decoy", "subsystem1.html#Decoy", null ]
+    ] ],
+    [ "Sequence Diagram", "subsubsystem1.html", [
+      [ "개요", "subsubsystem1.html#개요", null ]
+    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],

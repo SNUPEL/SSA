@@ -103,32 +103,37 @@ $(function(){initNavTree('subsystem1.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#Simulator">Simulator</a></li>
+<ul><li class="level1"><a href="#SimulatorManager">SimulatorManager</a></li>
 <li class="level1"><a href="#Builder">Builder</a></li>
-<li class="level1"><a href="#Missile">Missile</a><ul><li class="level2"><a href="#MissileCIWS">MissileCIWS</a></li>
-</ul>
-</li>
+<li class="level1"><a href="#Ship">Ship</a></li>
+<li class="level1"><a href="#Missile">Missile</a></li>
+<li class="level1"><a href="#Decoy">Decoy</a></li>
 </ul>
 </div>
-<div class="textblock"><p><a class="el" href="subsubsystem1.html">Sequence Diagram</a></p>
-<p>이번 장에서는 SSA 프로젝트가 어떤 흐름으로 구동되는지에 대해 서술합니다.</p>
+<div class="textblock"><p>이번 장에서는 SSA 프로젝트가 어떤 흐름으로 구동되는지에 대해 서술합니다.</p>
 <p>아래 다이어그램에서 SSA 프로그램이 실행 과정을 확인할 수 있습니다.</p>
 <div class="image">
-<img src="dfd.png" alt=""/>
+<img src="SSA_SequenceDiagram.png" alt=""/>
 <div class="caption">
-다이어그램 샘플</div></div>
-    <h1><a class="anchor" id="Simulator"></a>
-Simulator</h1>
-<p>Simulator는 전체 시뮬레이션을 통합 관리하는 클래스입니다.</p>
+Sequence Diagram</div></div>
+    <h1><a class="anchor" id="SimulatorManager"></a>
+SimulatorManager</h1>
+<p><a class="el" href="class_simulation_manager.html" title="미사일 피격성 평가 시뮬레이션을 관리하는 매니저">SimulationManager</a> 클래스는 전체 시뮬레이션을 통합 관리하는 클래스입니다.</p>
 <h1><a class="anchor" id="Builder"></a>
 Builder</h1>
-<p>Builder는 시뮬레이션에 동적 생성에 필요한 게임 오브젝트(미사일, 함정, 디코이)를 생성하는데 필요한 클래스입니다.</p>
+<p><a class="el" href="class_ship_builder.html" title="Ship을 초기 생성할 때 사용하는 클래스">ShipBuilder</a>, <a class="el" href="class_missile_builder.html" title="Missile을 초기 생성할 때 사용하는 클래스">MissileBuilder</a>, <a class="el" href="class_decoy_builder.html" title="Decoy를 초기 생성할 때 사용하는 클래스">DecoyBuilder</a> 클래스는 시뮬레이션에 동적 생성에 필요한 게임 오브젝트(미사일, 함정, 디코이)를 생성하는 클래스입니다.</p>
+<h1><a class="anchor" id="Ship"></a>
+Ship</h1>
+<p>Timestamp별 선박의 위치값을 가지고 있는 객체입니다.</p>
+<p>Update 함수가 반복될 때마다 위치값이 업데이트됩니다.</p>
 <h1><a class="anchor" id="Missile"></a>
 Missile</h1>
-<p>미사일의 구성에 대 해서 서술</p>
-<h2><a class="anchor" id="MissileCIWS"></a>
-MissileCIWS</h2>
-<p>미사일의 CIWS에 대해서 서술 </p>
+<p>Timestamp별 선박의 위치값을 가지고 있는 객체입니다.</p>
+<p>Update 함수가 반복될 때마다 위치값이 업데이트됩니다.</p>
+<h1><a class="anchor" id="Decoy"></a>
+Decoy</h1>
+<p>Timestamp별 디코이의 위치값을 가지고 있는 객체입니다.</p>
+<p>Update 함수가 반복될 때마다 위치값이 업데이트됩니다. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

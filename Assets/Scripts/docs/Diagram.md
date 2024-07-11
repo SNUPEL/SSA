@@ -1,25 +1,34 @@
 @page subsystem1 Diagram
-@subpage subsubsystem1
 @tableofcontents
 
 이번 장에서는 SSA 프로젝트가 어떤 흐름으로 구동되는지에 대해 서술합니다. 
 
-아래 다이어그램에서 SSA 프로그램이 실행 과정을 확인할 수 있습니다.
+Sequence Diagram은 특정 행동을 할 때 시작점에서부터 관련된 인스턴스의 데이터 주고받기, 함수 호출 등을 그림으로 한 눈에 보여주는 다이어그램입니다.
 
-![다이어그램 샘플](dfd.png)
+![Sequence Diagram](SSA_SequenceDiagram.png)
 
-@section Simulator
+@section SimulatorManager
 
-Simulator는 전체 시뮬레이션을 통합 관리하는 클래스입니다.
+SimulationManager 클래스는 전체 시뮬레이션을 통합 관리하는 클래스입니다.
 
 @section Builder
 
-Builder는 시뮬레이션에 동적 생성에 필요한 게임 오브젝트(미사일, 함정, 디코이)를 생성하는데 필요한 클래스입니다.
+ShipBuilder, MissileBuilder, DecoyBuilder 클래스는 시뮬레이션에 동적 생성에 필요한 게임 오브젝트(미사일, 함정, 디코이)를 생성하는 클래스입니다.
+
+@section Ship
+
+Timestamp별 선박의 위치값을 가지고 있는 객체입니다.
+
+Update 함수가 반복될 때마다 위치값이 업데이트됩니다.
 
 @section Missile
 
-미사일의 구성에 대 해서 서술
+Timestamp별 선박의 위치값을 가지고 있는 객체입니다.
 
-@subsection MissileCIWS
+Update 함수가 반복될 때마다 위치값이 업데이트됩니다.
 
-미사일의 CIWS에 대해서 서술
+@section Decoy
+
+Timestamp별 디코이의 위치값을 가지고 있는 객체입니다.
+
+Update 함수가 반복될 때마다 위치값이 업데이트됩니다.

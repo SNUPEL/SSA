@@ -4,7 +4,7 @@ var searchData=
   ['scalelocation_1',['scaleLocation',['../class_decoy.html#a5b71121c58ab66d02eec73928d7bfee6',1,'Decoy']]],
   ['scatterfoeships_2',['ScatterFoeShips',['../class_simulation_manager.html#a50f30ed90869d080b3a6b7759e9a1b1c',1,'SimulationManager']]],
   ['seeker_3',['Seeker',['../class_seeker.html',1,'']]],
-  ['sequence_20diagram_4',['Sequence Diagram',['../subsubsystem1.html',1,'subsystem1']]],
+  ['sequence_20diagram_4',['Sequence Diagram',['../subsubsystem1.html',1,'']]],
   ['setlocation_5',['SetLocation',['../class_decoy.html#a31fba2971a2c395789a98490a4e2c31f',1,'Decoy']]],
   ['setstarttimestamp_6',['SetStartTimeStamp',['../class_decoy.html#aed87618efbe8d8cbc4d9ee0b0323cd87',1,'Decoy']]],
   ['settarget_7',['SetTarget',['../class_field_of_view.html#ad30f1f991ca3b273b73c83c6d8e3f50c',1,'FieldOfView']]],
