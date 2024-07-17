@@ -178,8 +178,8 @@ public class Missile : MonoBehaviour
                 mSmoke.transform.position = this.gameObject.transform.position;
                 mSmoke.transform.parent = this.gameObject.transform;
                 mSmoke.Play();
-                mSeeker.SetActive(true);
-                mSeekerRange.SetActive(true);
+                //mSeeker.SetActive(true);
+                //mSeekerRange.SetActive(true);
                 if (isArrived())
                     return;
                 this.transform.position += (mLocations[timeStamp + mInterval] - mLocations[timeStamp]) / (mInterval / deltaTime);

@@ -13,7 +13,7 @@ public class FieldOfView : MonoBehaviour
     /// <summary>
     /// 탐색할 각도를 설정합니다.
     /// </summary>
-    public float mRadius = 80f;
+    public float mRadius = 30f;
     [Range(0f, 270f)]
     public float mAngle = 270;
     public LayerMask targetMask;

@@ -11,6 +11,7 @@ var class_simulation_manager =
     [ "Start", "class_simulation_manager.html#a21ea99d67142f1df367c84c7af074a8a", null ],
     [ "translate", "class_simulation_manager.html#a26d375ee165e87465d25d6e1bda9650c", null ],
     [ "Update", "class_simulation_manager.html#a6c75de507b04005d131ac37f0a1685a5", null ],
+    [ "ViewSomething", "class_simulation_manager.html#a9459fcca2d44fdad7daf443a5598f497", null ],
     [ "Interval", "class_simulation_manager.html#ae63dac26d98e08ad89278d7fc3ddf4c3", null ],
     [ "mDecoys", "class_simulation_manager.html#aeee4a372c063b3c6f284c84d3ee661f2", null ],
     [ "mDelta", "class_simulation_manager.html#a8a66ad9a5812f4297d523f62e73375b7", null ],

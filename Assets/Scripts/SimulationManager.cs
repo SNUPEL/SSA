@@ -16,7 +16,13 @@ public class SimulationManager : MonoBehaviour
     public static SimulationManager mInstance;
 
     private float mDelta = 0f;
-    private const float mStep = 0.25f;
+
+    [Range(0.02f, 0.3f)]
+    public float mStep = 0.05f;
+    [Range(0, 400f)]
+    public float mtranslated = 40f;
+
+    public static Vector3 mTranslated = Vector3.zero;
     // private float mStep = Time.deltaTime;
     private int mTimeStamp = 12;    // 시작 Timestamp를 12로 설정함(빠른 디버깅을 위한 설정)
     private int mMaxTimeStamp = 0;
@@ -42,15 +48,17 @@ public class SimulationManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<ShipBuilder>().Build("Assets//Input//AI//fri_ship.csv");
-        GetComponent<ShipBuilder>().Build("Assets//Input//AI//foe_ship.csv");
-        GetComponent<MissileBuilder>().Build("Assets//Input//AI//fri_sam.csv");
-        GetComponent<MissileBuilder>().Build("Assets//Input//AI//fri_ssm.csv");
-        GetComponent<MissileBuilder>().Build("Assets//Input//AI//foe_ssm.csv");
-        GetComponent<MissileBuilder>().Build("Assets//Input//AI//foe_sam.csv");
-        GetComponent<DecoyBuilder>().Build("Assets//Input//decoy.csv");
+        GetComponent<ShipBuilder>().Build("Assets//Input//20240509_v1//fri_ship.csv");
+        GetComponent<ShipBuilder>().Build("Assets//Input//20240509_v1//foe_ship.csv");
+        GetComponent<MissileBuilder>().Build("Assets//Input//20240509_v1//fri_sam.csv");
+        //GetComponent<MissileBuilder>().Build("Assets//Input//20240509_v1//fri_ssm.csv");
+        GetComponent<MissileBuilder>().Build("Assets//Input//20240509_v1//foe_ssm.csv");
+        //GetComponent<MissileBuilder>().Build("Assets//Input//20240509_v1//foe_sam.csv");
+        GetComponent<DecoyBuilder>().Build("Assets//Input//20240509_v1//decoy.csv");
 
         CalculateMaxTimeStamp();
+        ScatterFoeShips(mtranslated);
+        
     }
 
     /// <summary>
@@ -143,12 +151,12 @@ public class SimulationManager : MonoBehaviour
     }
 
     /// <summary>
-    /// (Deprecated) 함대들 사이의 간격을 임의로 넓힙니다.
+    /// 함대들 사이의 간격을 임의로 넓힙니다.
     /// </summary>
-    public static void ScatterFoeShips()
+    public static void ScatterFoeShips(float translated)
     {
         Vector3 _center = new Vector3();
-        float _scaleFactor = 20f;
+        //float _scaleFactor = 20f;
         int _count = 0;
        foreach(GameObject ship in mShips)
         {
@@ -159,16 +167,19 @@ public class SimulationManager : MonoBehaviour
             }
         }
         _center = _center / _count;
+       // mTranslated = 
        foreach (GameObject ship in mShips)
         {
             if (ship.name != "Foe Ship") continue;
             Dictionary<int, Vector3> _scaled = new Dictionary<int, Vector3>();
-            foreach(var location in ship.GetComponent<Ship>().Locations)
+            Vector3 _translatedVector = (ship.transform.position - _center) * translated;
+            foreach (var location in ship.GetComponent<Ship>().Locations)
             {
-                Vector3 _scaledLocation = location.Value;
-                _scaledLocation.x = ((location.Value - _center) * _scaleFactor + _center).x;
+                _scaled.Add(location.Key, location.Value + _translatedVector);
+                //Vector3 _scaledLocation = location.Value;
+                //_scaledLocation.x = ((location.Value - _center) * _scaleFactor + _center).x;
                 //_scaledLocation.z = ((location.Value - _center) * _scaleFactor + _center).z;
-                _scaled.Add(location.Key, _scaledLocation);
+                //_scaled.Add(location.Key, _scaledLocation);
             }
             ship.GetComponent<Ship>().Locations = _scaled;
             ship.transform.position = ship.GetComponent<Ship>().Locations.First().Value;
@@ -184,5 +195,21 @@ public class SimulationManager : MonoBehaviour
         {
             decoy.GetComponent<Decoy>().scaleLocation();
         }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="a">a에 대한 파라미터 설명</param>
+    /// <param name="b">b에 대한 파라미터 설명</param>
+    /// <param name="c"></param>
+    /// <returns></returns>
+    /// @note 주의할 사항이 있습니다.
+    /// @warning 주의할 사항이 있습니다.
+    /// 
+    public bool ViewSomething(int a, int b, int c)
+    {
+        bool _result = true;
+        return _result;
     }
 }
